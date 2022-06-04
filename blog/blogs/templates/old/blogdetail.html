@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% load social_share %}
+{% load embed_video_tags %}
+<style>
+.new a{
+    
+        color:blue;
+        font-style: italic;
+    }
+.button{
+    border:solid blue 2px;
+    border-radius: 5px;
+    font-style: italic;
+    margin-left:300px ;
+   
+}
+.button a{
+    color: blue
+}
+
+</style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<div class=" container" style='background: white;'>
+    <div class="row">
+        <div class="col-md-8 col-xs-8 col-sm-8">
+
+            <h3 style="font-style:italic">{{blogs.title}}</h3>
+            by <a href="#">{{blogs.author.author}}</a><br>
+            {% if blogs.image %}
+            <img src="/media/{{blogs.image}}" style="width: 800px;height:500px;">{% endif %}
+            {% if blogs.video %}
+            <div class="embed-responsive embed-responsive-4by3" >
+            {% video blogs.video '200x200' %}
+        </div>{% endif %}
+            <p>{{blogs.description}}
+            </p>
+
+            <i>Published at: {{blogs.created_at}}</i>
+            <br> <br> <br>
+            <div style='background: white'>
+            <table>
+                <tr>
+                    <th style="text-align:center">Comments</th>
+                   
+
+                </tr>
+            </table>
+        </div><br>
+            <div style="padding-bottom: 10px;background: white" >
+                <div class="container">
+                 <div class="row">                       
+                      <div class="col-xs-7">
+                        <form method="POST"  action = "{% url 'detail' blogs.slug %}">
+                            {% csrf_token %}
+                                <div class="form-group">
+                                  <label>Name</label>
+                                  <input name="name" type="text" style="border-color:rgb(226, 223, 221)"   class="form-control" id="id_name" placeholder="Name">
+                                </div>
+                                <div class="form-group">
+                                  <label>Email</label>
+                                  <input name="email" type="email" style="border-color:rgb(226, 223, 221)" class="form-control" placeholder="Email">
+                                </div>
+                                <div class="form-group">
+                                        <label>Comment</label>
+                                        <textarea name="description" cols="40" rows="5" maxlength="1000" required id="id_description" class="form-control z-depth-1"
+                  placeholder="Write something here..." style="resize:none;"></textarea>
+                                      </div>
+                                  
+                                <button type="submit" class="btn btn-default">Post</button><br>
+                              </form></div></div></div></div>
+                          <br><br>
+                              
+                          <div class="container"> 
+                    {% for i in comments %}
+                    
+                    <h3>{{i.name}}  </h3>
+                    {{i.description}}      
+                      <div class="new">
+                        {% post_to_facebook object_or_url  "Share on Facebook" %} </div><br>
+                    <!-- {% for j in i.comment %}
+                    
+                       
+                            <h6>{{ j.description }} </h6>
+                        
+                   
+                   {% endfor %} -->
+  
+                   {% for j in replies %}
+                   {% if j.comment.id == i.id %} 
+                   <div class="container" style="left:5%;">
+                    <h3>{{j.name}}  </h3>
+                   </div>
+                   <div class="container" style="left:5%;">
+                    {{ j.description }}  <br><br>
+                    
+                   </div>
+                    
+                   {% endif %}
+                   
+                   {% endfor %}
+                   <div class=" row"><div class="col-xs-3">
+                   <button class="button" style="background-color:white"><a  href="#" data-toggle="modal" data-target="#exampleModal" >Reply</a></button></div></div>
+                  <!-- Modal --><br><br>
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Reply</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="{% url 'reply' i.id blogs.slug  %}" method="POST">
+            {% csrf_token %}
+            <!-- {{ form_1.as_p }} -->
+            <div class="form-group">
+                <input type="text" name="name" maxlength="100" required id="id_name" placeholder="Name"
+                  class="form-control">
+              </div>
+
+              <div class="form-group">
+                <input type="text" name="email" maxlength="100" required id="id_email" placeholder="Email"
+                  class="form-control">
+              </div>
+
+              <div class="form-group">
+                <textarea name="description" cols="40" rows="10" maxlength="1000" required id="id_description" class="form-control z-depth-1"
+                  placeholder="Write something here..." style="resize:none;"></textarea>
+              </div>
+              
+              <div class="form-group">
+              <!-- <button type="submit" class="btn btn-lg btn-primary">Submit</button> -->
+              <button type="submit" class="btn btn-primary" style="float:none;">Submit</button>
+            </div>
+        </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+                    {% endfor %}
+
+                </div>
+           
+<!-- Button trigger modal -->
+
+
+
+
+        </div>
+      
+</div>
+
+
+
+{% endblock %}

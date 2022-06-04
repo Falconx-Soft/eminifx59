@@ -1,0 +1,28 @@
+.contact-form{
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-top: 6%;
+}
+
+.form-input{
+    display: flex;
+    width: 100%;
+}
+
+.form-input>input{
+    width: 50%;
+    margin-right: 10px;
+    font-size: 13px;
+}
+
+.message-area{
+    margin-top: 10px;
+    width: 100%;
+}
+
+.form-btn-div{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}

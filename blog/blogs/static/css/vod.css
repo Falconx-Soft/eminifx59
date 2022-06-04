@@ -1,0 +1,43 @@
+.vod-main-div{
+    padding: 10%;
+    padding-top: 0%;
+    padding-bottom: 0%;
+    padding-top: 5%;
+}
+
+.video-portion-inner-div{
+    display: flex;
+    margin-bottom: 25px;
+}
+
+.video-portion-details-area{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.video-portion-video-area-2{
+
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    
+}
+
+.video-portion-video-area{
+    width: 50%;
+}
+
+.recommended-blog-div{
+    padding: 10%;
+    padding-top: 0%;
+    padding-bottom: 5%;
+    padding-top: 5%;
+}
+
+.paggination-div{
+    display: flex;
+    justify-content: flex-end;
+}
