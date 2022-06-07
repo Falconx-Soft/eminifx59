@@ -26,3 +26,10 @@
     justify-content: flex-end;
     margin-top: 10px;
 }
+
+@media (max-width: 700px) {
+	.contact-form{
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+}

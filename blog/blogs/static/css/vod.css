@@ -8,6 +8,7 @@
 .video-portion-inner-div{
     display: flex;
     margin-bottom: 25px;
+    position: relative;
 }
 
 .video-portion-details-area{
@@ -15,6 +16,15 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
+}
+
+.video-portion-details-area-2{
+    position: absolute;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    right: 0;
 }
 
 .video-portion-video-area-2{
@@ -40,4 +50,39 @@
 .paggination-div{
     display: flex;
     justify-content: flex-end;
+}
+
+.video-portion-video-area-2-text{
+    text-align: right;
+}
+
+@media (max-width: 800px) {
+	.video-portion-inner-div {
+        display: block;
+        display: block;
+        position: relative;
+        min-height: 490px;
+    }
+
+    .video-portion-details-area{
+        width: 100%;
+    }
+    
+
+    .video-portion-video-area-2{
+        width: 100%;
+    }
+    
+    .video-portion-video-area{
+        width: 100%;
+    }
+
+    .video-portion-details-area-2{
+        width: 100%;
+        position: relative;
+    }
+
+    .video-portion-video-area-2-text{
+        text-align: left;
+    }
 }

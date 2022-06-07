@@ -26,3 +26,22 @@
     padding-bottom: 5%;
     padding-top: 5%;
 }
+
+/* NAv */
+
+.mobile-link-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    display: none;
+}
+
+.mobile-link-div>a{
+    margin-bottom: 20px;
+}
+
+.show{
+    display: flex !important;
+}

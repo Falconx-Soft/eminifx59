@@ -1,5 +1,6 @@
 from operator import mod
 from pydoc import describe
+from turtle import title
 from django.db import models
 from django.conf import settings
 from embed_video.fields import EmbedVideoField
@@ -78,3 +79,12 @@ class vod(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class intro(models.Model):
+    title        =       models.CharField(max_length=100)
+    sub_title    =       models.CharField(max_length=100)
+    video        =       EmbedVideoField()
+
+    def __str__(self):
+        return self.title

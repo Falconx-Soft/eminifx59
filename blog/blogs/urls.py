@@ -15,7 +15,8 @@ urlpatterns = [
     path('blogs/', views.blogs, name="blogs"),
     path('vod/', views.vod_function, name="vod"),
     path('contact-us/', views.contactUs, name="contact_us"),
-    path('terms/', views.terms, name="terms")
+    path('terms/', views.terms, name="terms"),
+    path('home_video/', views.home_video, name="home_video")
 
 
 ####################################################################################################

@@ -1,3 +1,4 @@
+from multiprocessing import context
 from django.shortcuts import render,redirect
 from .models import *
 from .forms import *
@@ -233,3 +234,9 @@ def contactUs(request):
 def terms(request):
     return render(request,'terms.html')
 
+def home_video(request):
+    intro_obj = intro.objects.all()
+    context = {
+        'intro_obj':intro_obj
+    }
+    return render(request,'home_video.html',context)
